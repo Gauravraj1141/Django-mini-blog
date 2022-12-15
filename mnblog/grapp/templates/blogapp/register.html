@@ -1,0 +1,42 @@
+{% extends 'blogapp/base.html' %}
+{% block title %}
+Register
+{% endblock title %}
+
+
+{% block buttons %}
+<div class="d-flex" role="button">
+    <a class=" btn btn-success mx-2 " href="{% url 'register' %}">Sign Up</a>
+    <a class=" btn btn-primary" href="{% url 'login' %}">Log In</a>
+</div>
+{% endblock buttons %}
+
+
+{% block content %}
+
+
+<div class="mt-4">
+    <h2>User Register</h2>
+    <hr>
+
+
+    {% for msg in messages %}
+    {{ msg }}
+
+    {% endfor %}
+
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {% for fm in form  %}
+
+
+        {{ fm.label_tag }} {{ fm }}<br> {{ fm.errors|striptags }}<br>
+        {% endfor %}
+
+        <input type="submit" value="Register" class="btn btn-success">
+
+    </form>
+
+
+</div>
+{% endblock content %}

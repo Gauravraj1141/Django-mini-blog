@@ -1,0 +1,81 @@
+{% extends 'blogapp/base.html' %}
+{% block title %}
+Blog
+{% endblock title %}
+
+
+
+{% comment %} it is the logic for our login and logout buttons {% endcomment %}
+
+{% block buttons %}
+
+{% if login %}
+
+<div class="d-flex" role="button">
+    <a class=" btn btn-success mx-2 " href="{% url 'logout' %}">Log Out</a>
+</div>
+
+
+{% else %}
+
+<div class="d-flex" role="button">
+    <a class=" btn btn-success mx-2 " href="{% url 'register' %}">Sign Up</a>
+    <a class=" btn btn-primary" href="{% url 'login' %}">Log In</a>
+</div>
+
+{% endif %}
+
+{% endblock buttons %}
+
+
+
+
+
+
+
+{% block content %}
+
+
+<div class="mt-4">
+    <h2>Blog Posts</h2>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3  bg-secondary shadow-lg p-3 mb-5  rounded">
+            <h3>Blog Post 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget diam auctor, gravida leo a, posuere
+                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
+                neque, at feugiat mi dictum vel.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3  bg-secondary shadow-lg p-3 mb-5  rounded">
+            <h3>Blog Post 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget diam auctor, gravida leo a, posuere
+                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
+                neque, at feugiat mi dictum vel.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3   bg-secondary shadow-lg p-3 mb-5  rounded">
+            <h3>Blog Post 1</h3>
+            <p>Lorem ipsum dolor tur adipiscing elit. In eget diam auctor, gravida leo a, posuere
+                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
+                neque, at feugiat mi dictum vel.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3  bg-secondary shadow-lg p-4 mb-5  rounded">
+            <h3>Blog Post 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget diam auctor, gravida leo a, posuere
+                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
+                neque, at feugiat mi dictum vel.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

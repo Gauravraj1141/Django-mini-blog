@@ -1,0 +1,34 @@
+{% extends 'blogapp/base.html' %}
+{% block title %}
+Profile
+{% endblock title %}
+
+
+<!--log out button -->
+
+
+{% block buttons %}
+<div class="d-flex" role="button">
+    <a class=" btn btn-success mx-2 " href="{% url 'logout' %}">Log Out</a>
+
+</div>
+{% endblock buttons %}
+
+
+
+<!--content -->
+
+{% block content %}
+
+
+<div class="mt-4">
+    <h2>User Profile</h2>
+    <hr>
+    <h3>Hey {{ name }} , Welcome to your profile</h3>
+
+    {% for msg in messages %}
+    {{ msg }}
+
+    {% endfor %}
+</div>
+{% endblock content %}
