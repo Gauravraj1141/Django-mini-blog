@@ -1,0 +1,51 @@
+{% extends 'blogapp/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Show Blogs
+{% endblock title %}
+
+
+<!--log out button -->
+
+
+{% block buttons %}
+<div class="d-flex" role="button">
+    <a class=" btn btn-success mx-2 " href="{% url 'logout' %}">Log Out</a>
+    <a href="{% url 'profile' %}"><img class="mx-2 profile-img" title="Profile" src="{% static 'images/profile.png' %}"
+            alt="Profile Icon"></a>
+
+</div>
+{% endblock buttons %}
+
+
+
+<!--content -->
+
+{% block content %}
+
+<div class="container h-100 text-center mycolor my-2 rounded-3 ">
+    <div class="mt-4">
+        <h2>Update Your blog</h2>
+        <hr>
+        {% if form.non_field_errors %}
+        <div class="non-field-errors">
+            {% for err in form.non_field_errors %}
+            <p class="form-error">{{ err }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {{ form.label_tag }}<br>{{ form }}<br>{{ form.errors|striptags }}
+
+            <input type="submit" value="Update blog" class="btn btn-warning my-2">
+
+
+        </form>
+
+    </div>
+</div>
+{% endblock content %}

@@ -1,4 +1,8 @@
 {% extends 'blogapp/base.html' %}
+{% load static %}
+
+
+<!--title -->
 {% block title %}
 Blog
 {% endblock title %}
@@ -13,6 +17,9 @@ Blog
 
 <div class="d-flex" role="button">
     <a class=" btn btn-success mx-2 " href="{% url 'logout' %}">Log Out</a>
+    <a href="{% url 'profile' %}"><img class="mx-2 profile-img" title="Profile" src="{% static 'images/profile.png' %}"
+            alt="Profile Icon"></a>
+
 </div>
 
 
@@ -27,55 +34,36 @@ Blog
 
 {% endblock buttons %}
 
-
-
-
-
-
-
+<!--body content -->
 {% block content %}
 
+<div class="container h-100 text-center mycolor my-3 rounded-3 ">
+    <div class="mt-5">
+        <h2>Blog Posts</h2>
+        <hr>
 
-<div class="mt-4">
-    <h2>Blog Posts</h2>
-    <hr>
 
-    <div class="row">
-        <div class="col-md-6 offset-md-3  bg-secondary shadow-lg p-3 mb-5  rounded">
-            <h3>Blog Post 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget diam auctor, gravida leo a, posuere
-                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
-                neque, at feugiat mi dictum vel.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 offset-md-3  bg-secondary shadow-lg p-3 mb-5  rounded">
-            <h3>Blog Post 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget diam auctor, gravida leo a, posuere
-                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
-                neque, at feugiat mi dictum vel.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 offset-md-3   bg-secondary shadow-lg p-3 mb-5  rounded">
-            <h3>Blog Post 1</h3>
-            <p>Lorem ipsum dolor tur adipiscing elit. In eget diam auctor, gravida leo a, posuere
-                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
-                neque, at feugiat mi dictum vel.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 offset-md-3  bg-secondary shadow-lg p-4 mb-5  rounded">
-            <h3>Blog Post 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget diam auctor, gravida leo a, posuere
-                tellus. Ut sit amet iaculis orci. Aliquam non ex sed dolor iaculis laoreet. Nullam viverra placerat
-                neque, at feugiat mi dictum vel.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-    </div>
+        {% for blg in blog %}
 
+
+        <div class="row my-3">
+            <div class="col-md-12 text-light shadow-lg p-3 mb-5  rounded">
+                <h3 class="font-heading">{{ blg.Title|slice:":30"|capfirst }}</h3>
+                <p class="font-para">{{ blg.Desc|slice:":300"|capfirst }}..</p>
+                <a href="{% url 'readblog' blg.U_id %}" class="btn btn-primary">Read More...</a>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end text-warning">
+
+
+                    <small>Written by
+                        {{ blg.Author|capfirst }} ,
+                    </small><small>{{ blg.Date|date:'d F, Y' }}</small>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+    </div>
 </div>
 {% endblock content %}
