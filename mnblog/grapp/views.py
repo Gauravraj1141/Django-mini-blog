@@ -80,7 +80,6 @@ def User_profile(request):
             author = username
         blogdata = User_Blog.objects.filter(Author=author)
         context = {"blogs": blogdata, "name": author}
-
         return render(request, "blogapp/profile.html", context)
 
     else:
@@ -147,10 +146,10 @@ def User_Update_blog(request, id):
 
 # delete blog
 
-
 def User_Delete_blog(request, id):
 
     if request.user.is_authenticated:
         blogupdatedata = User_Blog.objects.get(U_id=id)
         blogupdatedata.delete()
+        messages.success(request, "This blog has been deleted!")
         return redirect("/profile/")

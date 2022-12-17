@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Show Blogs
+Add Blog
 {% endblock title %}
 
 
@@ -32,6 +32,7 @@ Show Blogs
     <div class="mt-4">
         <h2>Add your blogs</h2>
         <hr>
+
         {% if form.non_field_errors %}
         <div class="non-field-errors">
             {% for err in form.non_field_errors %}
@@ -40,33 +41,32 @@ Show Blogs
         </div>
         {% endif %}
 
-        {% comment %} <form action="" method="POST" novalidate>
-            {% csrf_token %}
 
-            <div class="form-floating">
-                <label class="form-label" for="{{ form.auto_id }}">{{ form.label_tag }}</label>
-                {{ form }}
+        <div class="row  justify-content-md-center">
+            <div class="col-md-8">
+                <form action="" method="POST" novalidate>
+                    {% csrf_token %}
+
+                    {% for field in form %}
+
+                    <div class="form-outline mb-4 rounded-2">
+                        <label class="form-label font-para" for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {{ field }}
+                        <div class="d-grid  d-md-flex justify-content-md-end">
+                            <span class="text-danger"> {{ field.errors|striptags }}</span>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+
+
+                    <input type="submit" value="Add blog" class="btn btn-warning my-2">
+
+
+                </form>
+
             </div>
-            <div class="d-grid  d-md-flex justify-content-md-end">
-                <span class="text-danger"> {{ form.errors|striptags }}</span>
-            </div>
-
-
-
-            <input type="submit" value="Add Blog" class="btn btn-success my-2">
-
-
-        </form> {% endcomment %}
-
-        <form action="" method="POST" novalidate>
-            {% csrf_token %}
-            {{ form.label_tag }}<br>{{ form }}<br>{{ form.errors|striptags }}
-
-            <input type="submit" value="Update blog" class="btn btn-warning my-2">
-
-
-        </form>
-
+        </div>
     </div>
 </div>
 {% endblock content %}

@@ -29,17 +29,18 @@ Profile
         <h2>User Profile</h2>
         <hr>
 
-
         {% for msg in messages %}
-        {{ msg }}
+        <div class="alert alert-success" role="alert" id="alert">
+            <h4 {% if msg.tags %} class=" {{ msg.tags }}  alert-heading" {% endif %}>{{ msg }}</h4>
+        </div>
         {% endfor %}
 
 
-
         <h3>Hey {{ name }} , Welcome to your blogs</h3>
-        <span class="d-grid  d-md-flex justify-content-md-end">
+
+        <div class="d-flex justify-content-end">
             <a href="{% url 'showblog' %}" class="btn btn-outline-warning ">Add Blog</a>
-        </span>
+        </div>
 
         <hr>
 
@@ -56,7 +57,7 @@ Profile
                     <p class="font-para text-dark">{{ blg.Desc|capfirst }}</p>
                 </p>
 
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div class="d-grid gap-2 d-md-flex justify-content-end">
                     <a href="{% url 'update' blg.U_id %}" class="btn btn-outline-success mx-3">Update</a>
                     <a href="{% url 'delete' blg.U_id %}" class="btn btn-outline-warning">Delete</a>
                 </div>

@@ -44,5 +44,4 @@ class User_blog_form(forms.ModelForm):
         widgets = {
             'Title': forms.TextInput(attrs={"class": "form-control"}),
             'Desc': forms.Textarea(attrs={"class": "form-control"}),
-
         }

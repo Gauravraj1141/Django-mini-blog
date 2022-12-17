@@ -22,7 +22,6 @@ Login
 <div class="container h-100 text-center ">
     <div class="mt-4">
 
-
         {% if form.non_field_errors %}
         <div class="non-field-errors">
             {% for err in form.non_field_errors %}
@@ -31,13 +30,14 @@ Login
         </div>
         {% endif %}
 
-
         {% comment %} show success messages {% endcomment %}
 
-        {% for msg in messages %}
-        <div {% if msg.tags %} class="{{ msg.tags }} text-success font-weight-bold " {% endif %}>{{ msg }}</div>
-        {% endfor %}
 
+        {% for msg in messages %}
+        <div class="alert alert-success" role="alert">
+            <h4 {% if msg.tags %} class=" {{ msg.tags }}  alert-heading" {% endif %}>{{ msg }}</h4>
+        </div>
+        {% endfor %}
 
         <section class="vh-100">
             <div class="container py-5 h-100">
@@ -56,12 +56,8 @@ Login
                                             {% csrf_token %}
 
                                             <div class="d-flex align-items-center mb-3 pb-1">
-
                                                 <img src="{% static 'images/login.svg' %}" alt="logo"
                                                     class="profile-img text-warning">
-
-
-
                                             </div>
 
                                             <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log In to your
@@ -79,8 +75,6 @@ Login
 
                                             {% endif %}
 
-
-
                                             {% comment %} here we give our django login form {% endcomment %}
                                             {% for field in form %}
 
@@ -92,7 +86,6 @@ Login
                                                     <span class="text-danger"> {{ field.errors|striptags }}</span>
                                                 </div>
 
-
                                             </div>
                                             {% endfor %}
 
@@ -103,10 +96,8 @@ Login
 
                                         </form>
 
-
                                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a
                                                 href="{% url 'register' %}">Register Here.</a></p>
-
 
                                     </div>
                                 </div>
