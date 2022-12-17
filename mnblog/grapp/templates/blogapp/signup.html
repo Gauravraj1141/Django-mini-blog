@@ -16,7 +16,7 @@ Register
 
 
 
-<div class="container h-100 text-center my-3 ">
+<div class="container h-100 text-center">
 
     {% for msg in messages %}
     <div {% if msg.tags %} class="{{ msg.tags }} text-success font-weight-bold " {% endif %}>{{ msg }}</div>
@@ -24,7 +24,7 @@ Register
 
 
 
-    <section class="vh-100">
+    <section class="my-3">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
@@ -83,6 +83,9 @@ Register
                                         </div>
 
                                     </form>
+
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a
+                                            href="{% url 'login' %}">Sign in instead</a></p>
                                 </div>
                             </div>
                         </div>
